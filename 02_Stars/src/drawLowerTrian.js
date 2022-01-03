@@ -19,4 +19,4 @@ function drawLowerTrian() {
     return getStr; 
 }
 
-console.log(drawLowerTrian());
+

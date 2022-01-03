@@ -15,4 +15,4 @@ function drawСross() {
     }
     return getStr;
 }
-drawСross();
+

@@ -16,4 +16,3 @@ function drawEmptySquare() {
     return getStr; 
 }
 
-console.log(drawEmptySquare());

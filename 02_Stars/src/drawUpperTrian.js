@@ -18,4 +18,3 @@ function drawUpperTrian() {
     }
     return getStr; 
 }
-console.log(drawUpperTrian());

@@ -11,4 +11,3 @@ function drawFilledSquare() {
     return getStr;
 }
 
-console.log(drawFilledSquare());

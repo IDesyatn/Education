@@ -16,4 +16,3 @@ function drawUppLeftTrian() {
     return getStr; 
 }
 
-console.log(drawUppLeftTrian());
