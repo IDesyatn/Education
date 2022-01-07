@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="main.js" type="text/javascript"></script>
+    <link href="main.css" rel="stylesheet">
+    
+
+</head>
+<body>
+    <div class = 'firstDiv'>
+        <h1>Какое число я загадал? </h1>
+        <p>Выберите диапазон чисел</p>
+        <div class='beginInputBox'>
+            <p class='beginInputItem'>от</p>
+            <input type="text" id="startOfRange" value="1" class='beginInputItem'></p>
+            <p class='beginInputItem'>до</p>
+            <input type="text" id="endOfRange" value="100" class='beginInputItem'></p>
+        </div>
+        
+        <p >Выберите количество попыток</p>
+        <input type="text" id="attemptsNum" value="5" class = 'attemptsInputItem'></p>
+        
+        <div><button class='floating-button' onclick="firstStep()" id='inputButton'>Сгенерируем</button></div><br>
+        <div id="NaNErr"></div><br>
+        <div><button onclick="exit()" id='exitButton' class='floating-button'>Выход</button></div><br>
+
+        
+    </div>
+
+    <div class = 'secondDiv' id="secondDiv">
+        <br>
+        <div id='gameText' >Привет, я загадал число от <span id="begin"></span> до <span id="end"></span> из вашего диапазона.</div>
+        <div id='gameText2'>Попробуй угадать его за <span id="count"></span> </div><br>
+        <input type="text" id="guessInput" class = 'attemptsInputItem'></p>
+        <div id='divHelper' class="divHelper"></div> <br>
+        <div><button onclick="guessTheNumber()" id='guessButton' class='floating-button'>Проверим</button></div><br>
+    </div>
+
+
+</body>
+</html>

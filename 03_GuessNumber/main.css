@@ -1,0 +1,70 @@
+body {
+  text-align: center;
+  background-color: #5eb1bf;
+  font-family: Bradley Hand, cursive;
+}
+
+button {
+  font-family: Bradley Hand, cursive;
+}
+
+h1 {
+  font-size: 24px;
+  line-height: 25px;
+}
+
+.firstDiv {
+  border: solid #042a2b;
+  margin: 2% 20%;
+  background-color: #cdedf6;
+  border-radius: 100px 100px 10px 10px;
+}
+
+.secondDiv {
+  border: solid #042a2b;
+  margin: 2% 20%;
+  background-color: #cdedf6;
+  display: none;
+  border-radius: 10px 10px 80px 80px;
+}
+
+.beginInputBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.beginInputItem {
+  width: 5%;
+  height: 25%;
+  text-align: center;
+  margin: 0 5px;
+}
+
+.attemptsInputItem {
+  width: 10%;
+  text-align: center;
+}
+
+.floating-button {
+  background-color: #5eb1bf;
+  border-radius: 8px;
+  border: 2px solid #042a2b;
+  transition-duration: 0.4s;
+}
+.floating-button:hover {
+  background-color: #e7e7e7;
+  color: black;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+input[type="text"] {
+  border-radius: 5px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  width: 10%;
+  font-family: inherit;
+}
+.divHelper {
+  margin-left: 70px;
+  margin-right: 70px;
+}
