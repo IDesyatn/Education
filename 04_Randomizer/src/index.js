@@ -1,3 +1,5 @@
+module.exports = { countingOutNum, getRandomNum }; 
+
 const buttonGenerate = document.getElementById('generate');
 buttonGenerate.addEventListener('click', function (event) {
     readBeginEnd();
@@ -12,12 +14,12 @@ let min = 0;
 let max = 0;
 let count = 0; 
 
-function getRandomNum(begin, end) {   
+function getRandomNum(begin, end) {                                                          //test
         return Math.round(Math.random() * (end - begin) + begin);
 }
 
-function countingOutNum(begin, end) {   
-    console.log(usedNum);
+function countingOutNum(begin, end) {                                                       //test
+    
     let random = 0;
     for (let i = 0; ; i++) {
         random = getRandomNum(begin, end);
@@ -36,7 +38,6 @@ function reset() {
     usedNum = [];
     document.getElementById('generate').disabled = false;
     divHelper('');
-    return usedNum;
 }
 
 function readBeginEnd() {  
@@ -47,24 +48,21 @@ function readBeginEnd() {
         return divHelper('Range entered incorrectly');
     }
 
+    if (usedNum.length === end - begin) {
+        document.getElementById('generate').disabled = true;
+    }
+
     if (begin !== min || end !== max) {
         min = begin; 
         max = end; 
         usedNum = []; 
     }
-
-    if (usedNum.length === end - begin + 1) {
-        endOfNumbers();
-        return divHelper('Elements are over');
-    }
-
+    
     divHelper(countingOutNum(begin, end)); 
     return true;
 }
 
-function endOfNumbers() {
-    document.getElementById('generate').disabled = true;
-}
+
 
 function divHelper(str){        
     let divHelper = document.getElementById('helper'); 
