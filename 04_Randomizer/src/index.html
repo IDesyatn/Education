@@ -6,21 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Randomizer</title>
     
+    
     <link href="main.css" rel="stylesheet">
 </head>
 <body>
-    <div>
-        <h1>Randomizer</h1>
-        <h3>Min</h3>
-        <input type="text" id = "min">
-        <h3>Max</h3>
-        <input type="text" id = "max">
+    <div class = 'main'>
+        <h1 class = 'info'>Randomizer</h1>
+        <h3 class = 'info'>Min</h3>
+        <input type="text" class= 'inp firstInput' id = "min">
+        <h3 class = 'info'>Max</h3>
+        <input type="text" class= 'inp secondInput' id = "max">
         <br><br>
-        <button id="generate">Generate</button>
+        <button class="__button" id="generate">Generate</button>
         <br>
         <div id = "helper"></div>
         <br>
-        <button id = "reset">Reset</button>  
+        <button id = "reset" class="__button">Reset</button>  
     </div>
     <script src="index.js"></script>
 </body>

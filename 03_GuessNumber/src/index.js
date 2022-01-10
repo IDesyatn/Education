@@ -58,7 +58,7 @@ function firstStep() {
 
      
   
-    document.getElementById('secondDiv').style.display = "block";
+    document.getElementById('secondDiv').style.display = "flex";
 
 
     document.getElementById('count').innerHTML = endingNumbOfAttemp(attemptsNum);

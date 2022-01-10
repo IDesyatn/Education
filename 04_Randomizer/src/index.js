@@ -1,5 +1,3 @@
-module.exports = { countingOutNum, getRandomNum }; 
-
 const buttonGenerate = document.getElementById('generate');
 buttonGenerate.addEventListener('click', function (event) {
     readBeginEnd();
@@ -14,11 +12,11 @@ let min = 0;
 let max = 0;
 let count = 0; 
 
-function getRandomNum(begin, end) {                                                          //test
+function getRandomNum(begin, end) {                                                          
         return Math.round(Math.random() * (end - begin) + begin);
 }
 
-function countingOutNum(begin, end) {                                                       //test
+function countingOutNum(begin, end) {                                                       
     
     let random = 0;
     for (let i = 0; ; i++) {
@@ -44,7 +42,7 @@ function readBeginEnd() {
     let begin = Number(document.getElementById("min").value);
     let end = Number(document.getElementById("max").value);
 
-    if (isNaN(begin) || isNaN(end) || end < begin) {
+    if (isNaN(begin) || isNaN(end) || end < begin || !end|| !begin) {
         return divHelper('Range entered incorrectly');
     }
 
