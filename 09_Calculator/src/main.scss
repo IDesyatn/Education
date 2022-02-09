@@ -1,0 +1,46 @@
+body {
+  display: flex;
+}
+
+.content {
+  margin: 150px auto;
+  border-spacing: 1px;
+  background: lightgray;
+
+  &__display {
+    height: 130px;
+    vertical-align: bottom;
+    background: #393836ff;
+    font-family: "Montserrat", sans-serif;
+    border: 0;
+    margin: auto;
+    background: #393836ff;
+    width: 610px;
+    color: white;
+    font-size: 40px;
+    text-align: right;
+  }
+
+  &__cell {
+    padding: 0;
+  }
+
+  &__cell__button {
+    border: 1px gray;
+    width: 75px;
+    height: 50px;
+    margin: 0 auto;
+    color: gray;
+    font-size: 20px;
+    cursor: pointer;
+  }
+}
+
+.orange-button {
+  background: orange;
+  color: white;
+}
+
+.white-button {
+  background: white;
+}
