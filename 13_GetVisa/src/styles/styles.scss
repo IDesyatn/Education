@@ -4,37 +4,11 @@
     box-sizing: border-box;
 }
 .general {
-    width: 100%;
-    height: 100vh;
-    background: rgb(164, 255, 250);
-    &__header {
-        width: 100%;
-        height: 100px;
-        &-logo {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-end;
-            position: absolute;
-            right: 0;
-            font-size: 18px;
-        }
-        &-icon {
-            position: absolute;
-            left: 0;
-            color: rgb(255, 166, 0);
-            font-size: 60px;
-            transform: rotate(360deg);
-            transition-duration: transform 2s;
-            cursor: pointer;
-            &:hover {
-                transform: scale(1.5);
-                transition: transform 2s ease; 
-            }
-        }
-    }
     &__main {
-        background: linear-gradient(bottom, #fff, rgb(164, 255, 250));
+        width: 100%;
+        height: 100vh;
+        background: -webkit-gradient(linear, left bottom, left top, from(#fff), to(#e1c353));
+        background: linear-gradient(bottom, #fff, #e1c353);
         &-form {
             display: flex;
             flex-direction: column;
@@ -73,7 +47,7 @@
         &-participant {
             width: 80px;
             height: 80px;
-            border: 2px solid rgb(255, 169, 248);
+            border: 2px solid #0937ef;
             border-radius: 50%;
         }
         &-block {
@@ -265,8 +239,8 @@
 }
 .noWin {
     position: absolute;
-    bottom: 110px;
+    top: 50%;
     color: red;
-    right: 50%;
+    right: 45%;
     font-size: 31px;
 }

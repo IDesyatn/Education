@@ -13,8 +13,6 @@ export default function generateData() {
     const generateAll = document.getElementById('generateAll');
     const generateButton = document.querySelectorAll('.form-button');
 
-    let random;
-
     const names = ['Marina', 'Slava', 'Artem', 'Ruslan', 'Dima', 'Nastya', 'Natasha', 'Danya', 'Lesya', 'Alex'];
     const english = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 

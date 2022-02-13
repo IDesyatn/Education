@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
-        bundle: path.resolve(__dirname,'./src/script.js'),
+        bundle: path.resolve(__dirname,'src/modules/script.js'),
     },
     module: {
         rules: [
@@ -13,14 +13,14 @@ module.exports = {
                 use: ['style-loader', 'css-loader']
             },
             {
-                test: /\.s[ac]ss$/,
+                test: /\.s[c]ss$/,
                 use: ['style-loader', 'css-loader']
             }
         ]
     },
     plugins: [
         new HTMLWebpackPlugin({
-            template: path.resolve(__dirname,'public/index.html'),
+            template: path.resolve(__dirname, 'src', 'view', 'index.html'),
         }),
         new CleanWebpackPlugin()
     ],

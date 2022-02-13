@@ -1,7 +1,7 @@
 {
   "name": "getvisa",
   "version": "1.0.0",
-  "main": "src/js/script.js",
+  "main": "script.js",
   "scripts": {
     "dev": "webpack serve --mode=development --open",
     "start": "webpack --mode=development",
@@ -11,11 +11,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/preset-env": "^7.13.12",
+    "@types/jest": "^27.4.0",
+    "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^5.2.4",
     "html-webpack-plugin": "^5.3.1",
-    "jest": "^27.0.1",
+    "jest": "^27.5.1",
     "sass-loader": "^11.1.1",
     "style-loader": "^2.0.0",
     "webpack": "^5.37.1",
@@ -23,6 +26,8 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env-standalone": "^7.8.3",
     "path": "^0.12.7",
     "sass": "^1.32.13"
   },

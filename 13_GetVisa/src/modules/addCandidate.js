@@ -33,7 +33,7 @@ export default function addCandidate(participants) {
     let newPerson;
     let i = 0;
 
-    sun.addEventListener('dblclick', () => {
+    race.addEventListener('dblclick', () => {
         raceTable.classList.add('hide');
         initializationTable.classList.remove('hide');
 

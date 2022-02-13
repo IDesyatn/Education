@@ -1,9 +1,7 @@
-// 'use strict';
-
-import generateData from '../src/generateData';
-import addCandidate from '../src/addCandidate';
-import initRace from '../src/initRace';
-import startRace from '../src/startRace';
+import generateData from './generateData';
+import addCandidate from './addCandidate';
+import initRace from './initRace';
+import startRace from './startRace';
 
 const storage = {
     participants: []
