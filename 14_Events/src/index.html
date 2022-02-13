@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="gallery" id="general">
+        <div class="gallery__display" id="display">
+            <button id="showAll" class="gallery__display-showAll">Show All</button>
+            <div class="gallery__display-container">
+                <image class="gallery__display-mainPhoto" id="mainPhoto"/>
+            </div>
+        </div>
+        <div class="gallery__slider" id="slider">
+            <div class="gallery__slider-wrapper">
+                <div class="gallery__slider-container" id="photos">
+                    <image class="gallery__slider-photo photo1" src="../images/photo1.jpg" alt="fox 1" data-type="photo"></image>
+                    <image class="gallery__slider-photo photo2" src="../images/photo2.jpg" alt="fox 2" data-type="photo"></image>
+                    <image class="gallery__slider-photo photo3" src="../images/photo3.jpg" alt="fox 3" data-type="photo"></image>
+                    <image class="gallery__slider-photo photo4" src="../images/photo4.jpg" alt="fox 4" data-type="photo"></image>
+                    <image class="gallery__slider-photo photo5" src="../images/photo5.jpg" alt="fox 5" data-type="photo"></image>
+                    <image class="gallery__slider-photo photo6" src="../images/photo6.jpg" alt="fox 6" data-type="photo"></image>
+                    <image class="gallery__slider-photo photo7" src="../images/photo7.jpg" alt="fox 7" data-type="photo"></image>
+                    <image class="gallery__slider-photo photo8" src="../images/photo8.jpg" alt="fox 8" data-type="photo"></image>
+                    <image class="gallery__slider-photo photo9" src="../images/photo9.jpg" alt="fox 9" data-type="photo"></image>
+                    <image class="gallery__slider-photo photo10" src="../images/photo10.jpg" alt="fox 10" data-type="photo"></image>
+                    <image class="gallery__slider-photo photo11" src="../images/photo11.jpg" alt="fox 11" data-type="photo"></image>
+                    <image class="gallery__slider-photo photo12" src="../images/photo12.jpg" alt="fox 12" data-type="photo"></image>
+                    <image class="gallery__slider-photo photo13" src="../images/photo13.jpg" alt="fox 13" data-type="photo"></image>
+                    <image class="gallery__slider-photo photo14" src="../images/photo14.jpg" alt="fox 14" data-type="photo"></image>
+                    <image class="gallery__slider-photo photo15" src="../images/photo15.jpg" alt="fox 15" data-type="photo"></image>
+                    <image class="gallery__slider-photo photo16" src="../images/photo16.jpg" alt="fox 16" data-type="photo"></image>
+                    <image class="gallery__slider-photo photo17" src="../images/photo17.jpg" alt="fox 17" data-type="photo"></image>
+                    <image class="gallery__slider-photo photo18" src="../images/photo18.jpg" alt="fox 18" data-type="photo"></image>
+                    <image class="gallery__slider-photo photo19" src="../images/photo19.jpg" alt="fox 19" data-type="photo"></image>
+                    <image class="gallery__slider-photo photo20" src="../images/photo20.jpg" alt="fox 20" data-type="photo"></image>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="showAllPopup" class="showAllPopup hideShowAllPopup">
+        <div id="closePopup" class="showAllPopup__button">
+            <button class="showAllPopup__button-close"></button>
+        </div>
+        <div class="showAllPopup__container">
+            <image id="showAllPhoto" class="showAllPopup__photo"/>
+        </div>
+    </div>
+</body>
+</html>
