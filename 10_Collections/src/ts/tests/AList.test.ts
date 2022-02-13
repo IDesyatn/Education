@@ -1,176 +1,73 @@
-const { AList } = require('../AList')
+import {AList} from "../AList";
 
+const aList = new AList()
 
+aList.add(5);
+aList.add(10);
+aList.add(15);
+aList.add(20);
 
-describe('clear', () => {
-    test('Array should be empty', () => {
-        expect((() => {
-            const testList = new AList([1, 2, 3]);
-            testList.clear();
-            return testList.toArray()})()).toEqual([])
+describe('Tests for AList', () => {
+    test('tests for method contains (should return true)', () => {
+        expect(aList.contains(10)).toEqual(true)
     })
-});
-
-
-describe('getSize', () => {
-    test('Size is 0', () => {
-        const testList = new AList([]);
-        expect(testList.getSize()).toBe(0)
+    test('tests for method contains (should return false)', () => {
+        expect(aList.contains(11)).toEqual(false)
     })
-
-    test('Size is 3', () => {
-        const testList = new AList([1, 2, 3]);
-        expect(testList.getSize()).toBe(3)
+    test('tests for method get (should return result)', () => {
+        expect(aList.get(2)).toEqual(15)
     })
-});
-
-
-describe('add', () => {
-    test('Should add number', () => {
-        expect((() => {
-            const testList = new AList([]);
-            testList.add(8);
-            return testList.toArray()})()).toEqual([8])
+    test('tests for method getSize (should return result)', () => {
+        expect(aList.getSize()).toEqual(4)
     })
-});
-
-
-describe('set', function () {
-    test('Object value can be overwritten', () => {
-        expect((() => {
-            const testList = new AList([1, 2, 3]);
-            testList.set(5, 0);
-            return testList.toArray()})()).toEqual([5,2,3])
-        }
-    )
-    test('Object value cannot be overwritten', () => {
-            expect((() => {
-                const testList = new AList([1, 2, 3]);
-                testList.set(5, 6);
-                return testList.toArray()})()).toEqual([1,2,3])
-        }
-    )
-});
-
-
-describe('get', () => {
-    test('Get element with index 1', () => {
-        const testList = new AList([1, 2, 3]);
-        expect(testList.get(1)).toEqual(2)
+    test('tests for method print (should be undefined)', () => {
+        expect(aList.print()).toEqual([5,10,15,20])
     })
-});
-
-
-describe('remove', () => {
-    test('Return removed elememt', () => {
-        const testList = new AList([1, 2, 3]);
-        expect(testList.remove(1)).toEqual(1)
+    test('tests for method minIndex (should return result)', () => {
+        expect(aList.minIndex()).toEqual(0)
     })
-});
-
-
-describe('toArray', () => {
-    test('Return array', () => {
-        const testList = new AList([1, 2, 3]);
-        expect(testList.toArray()).toEqual([1,2,3])
+    test('tests for method maxIndex (should return result)', () => {
+        expect(aList.maxIndex()).toEqual(3)
+    })
+    test('tests for method maxValue (should return result)', () => {
+        expect(aList.maxValue()).toEqual(20)
+    })
+    test('tests for method minValue (should return result)', () => {
+        expect(aList.minValue()).toEqual(5)
+    })
+    test('tests for method retainAll (should return result)', () => {
+        expect(aList.retainAll([5,10,15,20])).toEqual([5,10,15, 20])
+    })
+    test('tests for method reverse (should return result)', () => {
+        expect(aList.reverse()).toEqual([20,15,10,5])
+    })
+    test('tests for method halfReverse (should return result)', () => {
+        expect(aList.halfReverse()).toEqual([15,20,5,10])
+    })
+    test('tests for method toArray (should return result)', () => {
+        expect(aList.toArray()).toEqual([5,10,15,20])
+    })
+    test('tests for method toString (should return result)', () => {
+        expect(aList.toString()).toEqual('5101520')
+    })
+    test('tests for method sort (should return result)', () => {
+        aList.add(4);
+        aList.add(8);
+        expect(aList.sort()).toEqual([4,5,8,10,15,20])
+    })
+    test('tests for method set (should return result)', () => {
+        expect(aList.set(4,0)).toEqual([4,5,8,10,15,20])
+    })
+    test('tests for method set (should return result)', () => {
+        expect(aList.set(5,-1)).toEqual([4,5,8,10,15,20])
+    })
+    test('tests for method removeAll (should return result)', () => {
+        expect(aList.removeAll([5])).toEqual([4,undefined,8,10,15,20])
+    })
+    test('tests for method remove (should return result)', () => {
+        expect(aList.remove(10)).toEqual(10)
+    })
+    test('tests for method clear (should return result)', () => {
+        expect(aList.clear()).toEqual([])
     })
 })
-
-
-describe('toString', () => {
-    test('Return string', () => {
-        const testList = new AList([1, 2, 3]);
-        expect(testList.toString()).toBe('1 2 3')
-    })
-});
-
-describe('contains', () => {
-    test('Contains element', () => {
-        const testList = new AList([1, 2, 3]);
-        expect(testList.contains(1)).toBe(true)
-    })
-    test('Does not contain an element', () => {
-        const testList = new AList([1, 2, 3]);
-        expect(testList.contains(4)).toBe(false)
-    })
-})
-
-describe('minValue', () => {
-    test('Return min value', () => {
-        const testList = new AList([1, 2, -3, 3]);
-        expect(testList.minValue()).toBe(-3)
-    })
-})
-
-describe('maxValue', () => {
-    test('Return max value', () => {
-        const testList = new AList([1, 6, 2, 3]);
-        expect(testList.maxValue()).toBe(6)
-    })
-})
-
-
-describe('minIndex', () => {
-    test('Return index of min element', () => {
-        const testList = new AList([1, 2, -3, 3]);
-        expect(testList.minIndex()).toBe(2)
-    })
-})
-
-describe('maxIndex', () => {
-    test('Return index of max element', () => {
-        const testList = new AList([1, 6, 2, 3]);
-        expect(testList.maxIndex()).toBe(1)
-    })
-})
-
-describe('reverse', () => {
-    test('Return reverse array', () => {
-        const testList = new AList([1,2,3])
-        expect((() => {
-            testList.reverse()
-            return testList.toArray()})()).toEqual([3,2,1])
-    })
-})
-
-describe('sort', () => {
-    test('Return sortes array', () => {
-        const testList = new AList([9, 3, 7, -1, -8, 3]);
-        expect((() => {
-            testList.sort()
-            return testList.toArray()
-        })()).toEqual([-8, -1, 3, 3, 7, 9])
-    })
-})
-
-
-describe('halfReverse', () => {
-    test('Return halfReverse array', () => {
-        const testList = new AList([1, 2, 3, 4, 5, 6, 7])
-        expect((() => {
-            testList.halfReverse()
-            return testList.toArray()
-        })()).toEqual([5, 6, 7, 4, 1, 2, 3])
-    })
-})
-
-describe('retainAll', () => {
-    test('Retain num', () => {
-        const testList = new AList([1, 2, 3, 4, 5]);
-        expect((() => {
-            testList.retainAll([1, 5, 8]);
-            return testList.toArray()
-        })()).toEqual([1, 5])
-    })
-})
-
-describe('removeAll', () => {
-    test('Remove num', () => {
-        const testList = new AList([1, 2, 3, 4, 5])
-        expect((() => {
-            testList.removeAll([1, 2, 3])
-            return testList.toArray()
-        })()).toEqual([4, 5])
-    })
-})
-

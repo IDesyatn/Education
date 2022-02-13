@@ -1,175 +1,132 @@
-const { LList } = require('../LList')
+import {LList} from "../LList"
 
-
-describe('clear', () => {
-    test('Array should be empty', () => {
+describe('tests for LList', () => {
+    test('test for method contains', () => {
+        const testLList = new LList([5,10,15,20])
+        expect(testLList.contains(10)).toBeTruthy()
+    })
+    test('test for method contains', () => {
+        const testLList = new LList([5,10,15,20])
+        expect(testLList.contains(11)).toBeFalsy()
+    })
+    test('tests for method get (should return result)', () => {
+        const testLList = new LList([5,10,15,20])
+        expect(testLList.get(2)).toEqual(15)
+    })
+    test('tests for method getSize (should return result)', () => {
+        const testLList = new LList([5,10,15,20])
+        expect(testLList.getSize()).toEqual(4)
+    })
+    test('tests for method print (should be undefined)', () => {
+        const testLList = new LList([5,10,15,20])
+        expect(testLList.print()).toBeUndefined()
+    })
+    test('tests for method minIndex (should return result)', () => {
+        const testLList = new LList([5,10,15,20])
+        expect(testLList.minIndex()).toEqual(0)
+    })
+    test('tests for method maxIndex (should return result)', () => {
+        const testLList = new LList([5,10,15,20])
+        expect(testLList.maxIndex()).toEqual(3)
+    })
+    test('tests for method maxValue (should return result)', () => {
+        const testLList = new LList([5,10,15,20])
+        expect(testLList.maxValue()).toEqual(20)
+    })
+    test('tests for method minValue (should return result)', () => {
+        const testLList = new LList([5,10,15,20])
+        expect(testLList.minValue()).toEqual(5)
+    })
+    test('tests for method retainAll (should return result)', () => {
+        const testLList = new LList([1,2,3,4,5])
+        expect((
+            () => {
+                testLList.retainAll([1,2])
+                return testLList.toArray()
+            }
+        )()).toEqual([1,2])
+    })
+    test('tests for method reverse (should return result)', () => {
+        const testLList = new LList([1,2,3,4,5])
+        expect((
+            () => {
+                testLList.reverse()
+                return testLList.toArray()
+            }
+        )()).toEqual([5,4,3,2,1])
+    })
+    test('tests for method halfReverse (should return result)', () => {
+        const testLList = new LList([1,2,3,4,5])
         expect((() => {
-            const testList = new LList([1, 2, 3]);
-            testList.clear();
-            return testList.toArray()})()).toEqual([])
+            testLList.halfReverse()
+            return testLList.toArray()
+        })()).toEqual([3,4,5,1,2])
     })
-});
-
-
-describe('getSize', () => {
-    test('Size is 0', () => {
-        const testList = new LList([]);
-        expect(testList.getSize()).toBe(0)
+    test('tests for method toArray (should return result)', () => {
+        const testLList = new LList([5,10,15,20])
+        expect(testLList.toArray()).toEqual([5,10,15,20])
     })
-
-    test('Size is 3', () => {
-        const testList = new LList([1, 2, 3]);
-        expect(testList.getSize()).toBe(3)
+    test('tests for method toString (should return result)', () => {
+        const testLList = new LList([1,2,3])
+        expect(testLList.toString()).toEqual('123')
     })
-});
-
-
-describe('add', () => {
-    test('Should add number', () => {
+    test('tests for method sort (should return result)', () => {
+        const testLList = new LList([22,11,5,1,32])
         expect((() => {
-            const testList = new LList([]);
-            testList.add(8);
-            return testList.toArray()})()).toEqual([8])
+            testLList.sort()
+            return testLList.toArray()
+        })()).toEqual([1,5,11,22,32])
     })
-});
-
-
-describe('set', function () {
-    test('Object value can be overwritten', () => {
+    test('tests for method set (should return result)', () => {
+        const testLList = new LList([22,11,5,1,32])
         expect((() => {
-            const testList = new LList([1, 2, 3]);
-            testList.set(5, 0);
-            return testList.toArray()})()).toEqual([5,2,3])
-        }
-    )
-    test('Object value cannot be overwritten', () => {
-            expect((() => {
-                const testList = new LList([1, 2, 3]);
-                testList.set(5, 6);
-                return testList.toArray()})()).toEqual([1,2,3])
-        }
-    )
-});
-
-
-describe('get', () => {
-    test('Get element with index 1', () => {
-        const testList = new LList([1, 2, 3]);
-        expect(testList.get(1)).toEqual(2)
+            testLList.set(4,0)
+            return testLList.toArray()
+        })()).toEqual([4,11,5,1,32])
     })
-});
-
-
-describe('remove', () => {
-    test('Return removed elememt', () => {
-        const testList = new LList([1, 2, 3]);
-        expect(testList.remove(1)).toEqual(1)
-    })
-});
-
-
-describe('toArray', () => {
-    test('Return array', () => {
-        const testList = new LList([1, 2, 3]);
-        expect(testList.toArray()).toEqual([1,2,3])
-    })
-})
-
-
-describe('toString', () => {
-    test('Return string', () => {
-        const testList = new LList([1, 2, 3]);
-        expect(testList.toString()).toBe('1 2 3')
-    })
-});
-
-describe('contains', () => {
-    test('Contains element', () => {
-        const testList = new LList([1, 2, 3]);
-        expect(testList.contains(1)).toBe(true)
-    })
-    test('Does not contain an element', () => {
-        const testList = new LList([1, 2, 3]);
-        expect(testList.contains(4)).toBe(false)
-    })
-})
-
-describe('minValue', () => {
-    test('Return min value', () => {
-        const testList = new LList([1, 2, -3, 3]);
-        expect(testList.minValue()).toBe(-3)
-    })
-})
-
-describe('maxValue', () => {
-    test('Return max value', () => {
-        const testList = new LList([1, 6, 2, 3]);
-        expect(testList.maxValue()).toBe(6)
-    })
-})
-
-
-describe('minIndex', () => {
-    test('Return index of min element', () => {
-        const testList = new LList([1, 2, -3, 3]);
-        expect(testList.minIndex()).toBe(2)
-    })
-})
-
-describe('maxIndex', () => {
-    test('Return index of max element', () => {
-        const testList = new LList([1, 6, 2, 3]);
-        expect(testList.maxIndex()).toBe(1)
-    })
-})
-
-describe('reverse', () => {
-    test('Return reverse array', () => {
-        const testList = new LList([1,2,3])
+    test('tests for method set2 (should return result)', () => {
+        const testLList = new LList([22,11,5,1,32])
         expect((() => {
-            testList.reverse()
-            return testList.toArray()})()).toEqual([3,2,1])
+            testLList.set(5,-1)
+            return testLList.toArray()
+        })()).toEqual([22,11,5,1,32])
     })
-})
-
-describe('sort', () => {
-    test('Return sortes array', () => {
-        const testList = new LList([9, 3, 7, -1, -8, 3]);
+    test('tests for method removeAll (should return result)', () => {
+        const testLList = new LList([22,11,5,1,32])
+        expect((
+            () => {
+                testLList.removeAll([22,11])
+                return testLList.toArray()
+            }
+        )()).toEqual([5,1,32])
+    })
+    test('tests for method removeAll (should return result2)', () => {
+        const testLList = new LList([1,2])
+        expect((
+            () => {
+                testLList.removeAll([1,2,3,4,5])
+                return testLList.toArray()
+            }
+        )()).toEqual([])
+    })
+    test('tests for method removeAll (should return result3)', () => {
+        const testLList = new LList([1,2])
+        expect((
+            () => {
+                testLList.removeAll([2,3,4,5])
+                return testLList.toArray()
+            }
+        )()).toEqual([1])
+    })
+    test('tests for method remove (should return result)', () => {
+        const testLList = new LList([1,2,3,10])
+        expect(testLList.remove(10)).toEqual(10)
+    })
+    test('tests for method clear (should return result)', () => {
+        const testLList = new LList([1,2,3])
         expect((() => {
-            testList.sort()
-            return testList.toArray()
-        })()).toEqual([-8, -1, 3, 3, 7, 9])
+            testLList.clear()
+            return testLList.toArray()
+        })()).toEqual([])
     })
 })
-
-
-describe('halfReverse', () => {
-    test('Return halfReverse array', () => {
-        const testList = new LList([1, 2, 3, 4, 5, 6, 7])
-        expect((() => {
-            testList.halfReverse()
-            return testList.toArray()
-        })()).toEqual([5, 6, 7, 4, 1, 2, 3])
-    })
-})
-
-describe('retainAll', () => {
-    test('Retain num', () => {
-        const testList = new LList([1, 2, 3, 4, 5]);
-        expect((() => {
-            testList.retainAll([1, 5, 8]);
-            return testList.toArray()
-        })()).toEqual([1, 5])
-    })
-})
-
-describe('removeAll', () => {
-    test('Remove num', () => {
-        const testList = new LList([1, 2, 3, 4, 5])
-        expect((() => {
-            testList.removeAll([1, 2, 3])
-            return testList.toArray()
-        })()).toEqual([4, 5])
-    })
-})
-

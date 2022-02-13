@@ -20,21 +20,17 @@ const PUBLIC = './public';
 
 const paths = {
     build: {
-        root: `${BUILD}/`,
-        html: `${BUILD}/`
+        root: `${BUILD}/`
     },
     src: {
         ts: `${SRC}/ts/index.ts`,
         public: `${PUBLIC}/**/*`,
     },
     compileWatch: {
-        ts: `${SRC}/ts/**/*.ts`,
-        img: `${SRC}/img/**/*`,
-        html: `${SRC}/html/*.html`,
+        ts: `${SRC}/ts/**/*.ts`
     },
     reloadWatch: {
-        js: `${BUILD}/**/*.js`,
-        html: `${BUILD}/*.html`,
+        js: `${BUILD}/**/*.js`
     },
 };
 
@@ -88,24 +84,11 @@ gulp.task('scripts', (cb) => {
     cb();
 });
 
-gulp.task('fileInclude', (cb) => {
-    gulp.src([SRC + '/html/index.html'])
-        .pipe(fileInclude({prefix: '@@', basepath: '@file'}))
-        .pipe(gulp.dest(BUILD));
-    cb();
-});
 
-gulp.task('build', gulp.series('clean', 'fileInclude', gulp.parallel('copy', 'scripts')));
+gulp.task('build', gulp.series('clean', gulp.parallel('copy', 'scripts')));
 
 gulp.task('watch', () => {
-    gulp.watch(paths.compileWatch.html, gulp.series('fileInclude'));
     gulp.watch(paths.compileWatch.ts, gulp.series('scripts'));
 });
 
-gulp.task('serve', () => {
-    browserSync.init({server: {baseDir: './build/'}});
-    browserSync.watch(paths.reloadWatch.js).on('change', browserSync.reload);
-    browserSync.watch(paths.reloadWatch.html).on('change', browserSync.reload);
-});
-
-gulp.task('default', gulp.series('build', gulp.parallel('watch', 'serve')));
+gulp.task('default', gulp.series('build', 'watch'));

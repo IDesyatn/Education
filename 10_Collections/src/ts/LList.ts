@@ -1,41 +1,38 @@
 import {IList} from "./types";
 
 class Node {
-    value: number;
-    next: Node;
+    value: number
+    next: Node
+
     constructor(value: number, next?: Node) {
-        this.value = value
-        this.next = next || null
+        this.value = value;
+        this.next = next;
     }
 }
 
 export class LList implements IList {
-    private root: Node | null;
+
+    private root: null | Node;
+    private tail: null | Node;
     private size: number;
-    private tail: Node | null;
 
-    constructor(input?)
-   {
-
-        if (input && Array.isArray(input)) {
-            for (let i = 0; i < input.length; i++) {
-                this.add(input[i])
+    constructor(item?:number[] | number) {
+        this.root = null;
+        this.tail = null;
+        this.size = 0;
+        if (Array.isArray(item)) {
+            for (let i = 0; i < item.length; i++) {
+                this.add(item[i])
             }
-        } else if (input && typeof input === 'number') {
-            for (let i = 0; i < input; i++) {
-                this.add(0)
-            }
-        } else if (!input) {
-            this.root = null;
-            this.tail = null;
-            this.size = 0;
         } else {
-            throw new Error('Invalid input data')
+            for (let i = 0; i < item; i++) {
+                this.add(undefined)
+            }
         }
     }
 
-    add(item): void {
-        const node = new Node(item, null)
+    add(value): void {
+        const node = new Node(value, null)
 
         if (this.tail) {
             this.tail.next = node;
@@ -54,39 +51,61 @@ export class LList implements IList {
         this.tail = null;
     }
 
-    contains(item): boolean {
-        return false;
-    }
-
-    get(idx): number {
-        if (this.root === null) {
-            return;
-        }
-        let node = this.root;
+    contains(value): boolean {
+        let current = this.root;
         let index = 0;
-        while (node){
-            if (index === idx) {
-                return node.value;
+
+        while(index <= this.size) {
+            if (current.value === value) {
+                return true;
             }
-            node = node.next;
+
+            if (current.value !== value) {
+                if (current.next !== null) {
+                    current = current.next;
+                } else {
+                    return false;
+                }
+            }
             index++
         }
     }
 
+    get(index): number {
+        let counter = 0;
+        let current = this.root
+
+        if (index < 0) {
+            return -1
+        }
+
+        if (index >= this.size) {
+            return -1
+        }
+
+        while(counter <= this.size) {
+            if (counter === index) {
+                return current.value
+            }
+            current = current.next
+            counter++
+
+        }
+    }
+
     getSize(): number {
-        let count = 0; 
+        let counter = 0;
         let current = this.root;
 
         while(current) {
-            count++
+            counter++
             current = current.next
         }
-        return count;
+        return counter;
     }
 
-
     halfReverse(): void {
-         let arr = this.toArray()
+        let arr = this.toArray()
 
         if (arr.length < 1) {
             return
@@ -107,77 +126,74 @@ export class LList implements IList {
         }
     }
 
-
     maxIndex(): number {
-        let max = this.root.value; 
-        let current = this.root; 
+        let maxValue = this.root.value
+        let current = this.root
         let counter = 0;
-        let indx = 0; 
+        let index = 0;
 
-        while (current) {
-            if (max < current.value) {
-                max = current.value;
-                indx = counter;
+        while(current) {
+            if (maxValue < current.value) {
+                maxValue = current.value
+                index = counter;
             }
-            counter++;
-            current = current.next; 
+            counter++
+            current = current.next
         }
-        return indx;
+        return index
     }
 
     maxValue(): number {
-        let max = this.root.value; 
-        let current = this.root; 
-        
-         while (current) {
-            if (max < current.value) {
-                max = current.value;
-            }
-            current = current.next; 
-        }
+        let maxValue = this.root.value
+        let current = this.root;
 
-        return max;
+        while(current) {
+            if (maxValue < current.value) {
+                maxValue = current.value
+            }
+            current = current.next
+        }
+        return maxValue
     }
 
     minIndex(): number {
-        let min = this.root.value; 
-        let current = this.root; 
+        let minValue = this.root.value
+        let current = this.root
         let counter = 0;
-        let indx = 0; 
+        let index = 0;
 
-        while (current) {
-            if (min > current.value) {
-                min = current.value;
-                indx = counter;
+        while(current) {
+            if (minValue > current.value) {
+                minValue = current.value
+                index = counter;
             }
-            counter++;
-            current = current.next; 
+            counter++
+            current = current.next
         }
-
-        return indx;
+        return index
     }
 
     minValue(): number {
-        let min = this.root.value; 
-        let current = this.root; 
-        
-         while (current) {
-            if (min > current.value) {
-                min = current.value;
-            }
-            current = current.next; 
-        }
+        let minValue = this.root.value
+        let current = this.root
 
-        return min;
+        while(current) {
+            if (minValue > current.value) {
+                minValue = current.value
+            }
+            current = current.next
+        }
+        return minValue
     }
 
     print(): void {
-        let current = this.root; 
+        let current = this.root;
 
-        for (let i = 0; i < this.size; i++){
-            console.log(current.value); 
-            current = current.next;
+        while(current) {
+            console.log(current.value)
+            current = current.next
         }
+
     }
 
     remove(value): number {
@@ -215,16 +231,15 @@ export class LList implements IList {
             }
         }
 
-    
     }
 
-    removeAll(items: number[]): void {
-         let current = this.root;
+    removeAll(array): void {
+        let current = this.root;
         let prev = null;
 
         while(current) {
 
-            if (items.includes(current.value)) {
+            if (array.includes(current.value)) {
                 if (current.next !== null) {
                     current.value = current.next.value;
                     current.next = current.next.next
@@ -252,7 +267,38 @@ export class LList implements IList {
         }
     }
 
-    retainAll(items: number[]): void {
+    retainAll(array): void {
+        let current = this.root;
+        let prev = null;
+
+        while(current) {
+
+            if (!array.includes(current.value)) {
+                if (current.next !== null) {
+                    current.value = current.next.value;
+                    current.next = current.next.next
+                } else {
+                    if (prev === null) {
+                        this.root = null;
+                        this.tail = null;
+                        current = null;
+                    }
+
+                    if (prev !== null) {
+                        prev.next = null
+                        current = prev
+                    }
+                }
+            } else {
+                prev = current
+                current = current.next
+            }
+        }
+        this.size = this.getSize()
+
+        if (this.size === 1) {
+            this.tail = null;
+        }
     }
 
     reverse(): void {
@@ -270,59 +316,68 @@ export class LList implements IList {
         for (let i = 0; i < result.length; i++) {
             this.add(result[i])
         }
-    
     }
 
-    set(item, idx): void {
-        if (this.root === null) {
-            return;
-        }
-        let node = this.root;
-        let index = 0;
-        while (node){
-            if (index === idx) {
-                 node.value = item;
-                 return;
+    set(value, index): void {
+        let current = this.root;
+        let counter = 0;
+
+        while(counter < this.size) {
+            if (counter === index) {
+                current.value = value;
             }
-            node = node.next;
-            index++
+
+            current = current.next;
+            counter++;
         }
     }
 
-    sort(): number[] {
-        return [];
+    sort(): void {
+
+        let arr: number[] = doSort(this.toArray())
+        function doSort (arr): number[] {
+
+            if (arr.length <= 1) {
+                return arr
+            }
+
+            let pivot = arr[0];
+            let left = [];
+            let right = [];
+            for (let i = 1; i < arr.length; i++) {
+                if (arr[i] < pivot) {
+                    left[left.length] = arr[i]
+                } else {
+                    right[right.length] = arr[i]
+                }
+            }
+            return doSort(left).concat(pivot, doSort(right));
+        }
+        this.clear()
+
+        for (let i = 0; i < arr.length; i++) {
+            this.add(arr[i])
+        }
+
     }
 
     toArray(): number[] {
-        let arr = []; 
-        let current = this.root; 
-                
-        while (current) {
-            arr[arr.length] = current.value;
-            current = current.next; 
+        const result = []
+        let current = this.root
+        while(current) {
+            result[result.length] = current.value
+            current = current.next
         }
-
-        return arr;
+        return result
     }
 
-    toString(): string{
-        let str = ''; 
-        let current = this.root; 
-                
-        while (current) {
-            str = str + ' ' + current.value;
-            current = current.next; 
+    toString(): string {
+        let result = ''
+        let current = this.root
+        while(current) {
+            result = result + '' + current.value
+            current = current.next
         }
-        
-        return str;
+        return result
     }
-
 }
-
-const test1 = new LList([2,5,6]);
-test1.add(1); 
-console.log(test1.toArray())
-test1.add(2); 
-console.log(test1.toArray())
-
-module.exports = {LList};

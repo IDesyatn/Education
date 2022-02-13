@@ -1,235 +1,221 @@
 import {IList} from "./types";
 
-export class AList implements IList{
-    private array: number[];
+export class AList implements IList {
+    private array: number[]
     private size: number;
 
-    constructor(array?) {
-        this.array = array || [];
-        this.size = this.array.length || 0;
+    constructor() {
+        this.array = [];
+        this.size = 0;
     }
 
-    add(item): void {
+    add(item: number): void {
         this.array[this.size] = item;
         this.size++;
     }
 
-    clear(): void {
+    clear(): number[] {
         this.array.length = 0;
         this.size = 0;
+        return this.array
     }
 
     contains(item): boolean {
-        for(const itemElement of this.array){
-            if(item === itemElement) {
-                return true
+        for (let i = 0; i < this.size; i++) {
+            const element = this.array[i];
+            if (element === item) {
+                return true;
             }
         }
         return false;
     }
 
-    get(index): number{
-        return this.array[index]; 
+    get(index: number): number {
+        return this.array[index];
     }
 
     getSize(): number {
         return this.size;
     }
 
-    halfReverse(): void {
-        let tmp = 0;
-        if (this.size % 2 === 0) {
-            for (let i = 0; i < (this.size/2); i++){
-                tmp = this.array[i]; 
-                this.array[i] = this.array[this.size / 2 + i]
-                this.array[this.size / 2 + i] = tmp; 
-                tmp = 0;
-            }    
+    halfReverse(): number[] {
+        const oldArray = this.array
+        const firstPartLen = Math.floor(oldArray.length / 2)
+        const secondPartLen = oldArray.length - firstPartLen
+        const newArr = []
+        for (let i = 0; i < secondPartLen; i++) {
+            newArr[i] = oldArray[i + firstPartLen]
         }
-        else{
-            for (let i = 0; i < Math.round(this.size/2)-1; i++){
-                tmp = this.array[i]; 
-                this.array[i] = this.array[Math.round(this.size / 2) + i]
-                this.array[Math.round(this.size / 2) + i] = tmp; 
-                tmp = 0;
-            }    
+        for (let i = 0; i < firstPartLen; i++) {
+            newArr[i + secondPartLen] = oldArray[i]
         }
+        return newArr
     }
 
     maxIndex(): number {
-        let max = this.array[0]; 
-        let indx = 0; 
-        for (let i = 1; i < this.size; i++){
-            if (this.array[i] > max) {
-                max = this.array[i];
-                indx = i;
+        let max;
+        for (let i = 0; i < this.size; i++) {
+            if (i === 0) {
+                max = i;
             }
-        }
-        return indx;
-    }
-
-    maxValue(): number {
-        let max = this.array[0]; 
-        for (let i = 1; i < this.size; i++){
-            if (this.array[i] > max) {
-                max = this.array[i]; 
+            if (max < this.array[i]) {
+                max = i;
             }
         }
         return max;
     }
 
     minIndex(): number {
-        let min = this.array[0]; 
-        let indx = 0; 
-        for (let i = 1; i < this.size; i++){
-            if (this.array[i] < min) {
-                min = this.array[i];
-                indx = i;
+        let min;
+        for (let i = 0; i < this.size; i++) {
+            if (i === 0) {
+                min = i;
             }
-        }
-        return indx;
-    }
-
-    minValue(): number {
-        let min = this.array[0]; 
-        for (let i = 1; i < this.size; i++){
-            if (this.array[i] < min) {
-                min = this.array[i]; 
+            if (min > this.array[i]) {
+                min = i;
             }
         }
         return min;
     }
 
-    print(): void {
-        for (let i = 0; i < this.size; i++){
+    maxValue(): number {
+        let max = this.array[0]
+        for (let i = 0; i < this.array.length; i++) {
+            if (max < this.array[i]) {
+                max = this.array[i];
+            }
+        }
+        return max;
+    }
+
+    minValue(): number {
+        let min = this.array[0];
+        for(let i = 0; i < this.array.length; i++){
+            if (min > this.array[i]) {
+                min = this.array[i]
+            }
+        }
+        return min;
+    }
+
+    print(): number[] {
+        for (let i = 0; i < this.size; i++) {
             console.log(this.array[i]);
         }
+        return this.array
     }
 
     remove(item): number {
-        let newArr = [];
-        let newArrSize = 0; 
-        let count = 0; 
-        let del = 0; 
-        
-        for (let i = 0; i < this.size; i++){
-            if (this.array[i] === item && count === 0) {
-                del = this.array[i];
-                continue; 
+        const oldArray = this.array;
+        this.array = [];
+        this.size = 0;
+        let returnValue;
+
+        for (let i = 0; i < oldArray.length; i++) {
+            const element = oldArray[i];
+            if (element !== item) {
+                this.add(element);
+            } else {
+                returnValue = element;
             }
-            newArr[newArrSize] = this.array[i];
-            newArrSize++; 
         }
-        
-        this.array = newArr; 
-        this.size = this.size - 1; 
-        return del;
+        return returnValue;
     }
 
-    removeAll(items: number[]): void {
-        let newArr = []; 
-        let bool = false;
-        for (let i = 0; i < this.size; i++){
-            bool = false;
-            for (let j = 0; j < items.length; j++){
-                if (this.array[i] === items[j]) {
-                    bool = true;
+
+    removeAll(items: number[]): number[] {
+        const oldArray = this.array;
+
+        for (let i = 0; i < oldArray.length; i++) {
+            for (let j = 0; j < items.length; j++) {
+                if (oldArray[i] === items[j]) {
+                    oldArray[i] = undefined;
+                    this.size--;
                 }
             }
-
-            if (bool !== true) {
-                newArr[newArr.length] = this.array[i];
-            }
         }
-        this.array = newArr;
-        this.size = newArr.length;
+        return oldArray;
+
     }
 
-    retainAll(items: number[]): void {
-        let newArr = []; 
-        let bool = false;
-        for (let i = 0; i < this.size; i++){
-            bool = false;
-            for (let j = 0; j < items.length; j++){
-                if (this.array[i] === items[j]) {
-                    bool = true;
+    retainAll(items: number[]): number[] {
+        const oldArray = this.array;
+
+        for (let i = 0; i < oldArray.length; i++) {
+            let checker = false
+            for (let j = 0; j < items.length; j++) {
+                const innerItem = items[j];
+                if (oldArray[i] === innerItem) {
+                    checker = true;
+                    break;
                 }
             }
-
-            if (bool === true) {
-                newArr[newArr.length] = this.array[i];
+            if (!checker) {
+                oldArray[i] = undefined;
+                this.size--;
             }
         }
-        this.array = newArr;
-        this.size = newArr.length;
+
+        return oldArray;
     }
 
-    reverse(): void {
-        let rev = [];
-        rev.length = this.size; 
-        for (let i = 0; i < this.size; i++) {
-            rev[rev.length - i - 1] = this.array[i];
+    reverse(): number[] {
+        const oldArray = this.array;
+        const newArr = []
+
+        for (let i = 0; i < oldArray.length; i++) {
+            newArr[i] = oldArray[oldArray.length - i - 1]
         }
-        this.array = rev;
+        return newArr
     }
 
-    set(item, index): void {
-        if (this.array[index]) {
-            this.array[index] = item;
+    set(item, index: number): number[] {
+        const oldArray = this.array;
+        this.array = [];
+        this.size = 0;
+
+        if(index < 0) {
+            console.log(false);
         }
+        for (let i = 0; i < oldArray.length; i++) {
+            const element = oldArray[i];
+            if (i === index) {
+                this.add(item);
+            } else {
+                this.add(element);
+            }
+        }
+        return this.array;
     }
 
     sort(): number[] {
-        if (this.size < 2) {
-            return this.array; 
-    }
-        let less = []; 
-        let greater = [];
-        let middleNum = Math.round(this.size / 2) - 1;
-        let middle = this.array[middleNum];
-        let lessCount = 0;
-        let greaterCount = 0;
+        let oldArray = this.array
 
-        for (let i = 0; i < this.size; i++){
-            if (i === middleNum) {
-            continue; 
+        for (let i = 0, endI = oldArray.length - 1; i < endI; i++) {
+            let wasSwap = false
+            for (let j = 0, endJ = endI - i; j < endJ; j++) {
+                if (oldArray[j] > oldArray[j + 1]) {
+                    let swap = oldArray[j]
+                    oldArray[j] = oldArray[j + 1]
+                    oldArray[j + 1] = swap
+                    wasSwap = true
+                }
+            }
+            if (!wasSwap) break
         }
-
-        if (this.array[i] < middle) {
-            less[lessCount] = this.array[i];  
-            lessCount++; 
-        }
-        else {
-            greater[greaterCount] = this.array[i];  
-            greaterCount++; 
-        }
+        return oldArray
     }
-        let lessList = new AList(less);
-        let greaterList = new AList(greater);
-        this.array = [...lessList.sort(), middle, ...greaterList.sort()]; 
-        return this.array;
-}
 
     toArray(): number[] {
         return this.array;
     }
 
     toString(): string {
-        let str = '' + this.array[0];
-        for (let i = 1; i < this.size; i++){
-            str = str + ' ' + this.array[i];
+        const oldArray = this.array
+        let str = ''
+        for (let i = 0; i < oldArray.length; i++) {
+            str += oldArray[i]
         }
-        return str;
+        return str
     }
-
 }
-
-module.exports = {AList};
-
-
-
-
-
-
-
-
