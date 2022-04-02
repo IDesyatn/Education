@@ -28,3 +28,16 @@ export function addAnswer(value:number){
         payload: value
     })
 } 
+
+export function addLengthConvertInit(){
+    store.dispatch({
+        type: 'LENGTH_CONVERT_INIT'
+    })
+} 
+
+export function addCurrencyConvertInit(){
+    store.dispatch({
+        type: 'CURRENCY_CONVERT_INIT'
+    })
+} 
+

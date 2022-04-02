@@ -3,6 +3,8 @@ import './App.css';
 import {BrowserRouter, Link, Switch, Route} from "react-router-dom";
 import loadable from "@loadable/component";
 
+import {addLengthConvertInit, addCurrencyConvertInit} from '../../Store/actionsTypeLength'
+
 const CurrencyConverter = loadable(()=>import('../Pages/CurrencyConverter'))
 const LengthConverter = loadable(()=>import('../Pages/LengthConverter'))
 
@@ -13,10 +15,10 @@ function App() {
                 <header className="App-header">
                     <nav>
                         <ul>
-                            <li onClick={testFunc}>
+                            <li onClick={addCurrencyConvertInit}>
                                 <Link to="/currency">Currency Converter</Link>
                             </li>
-                            <li>
+                            <li onClick={addLengthConvertInit}>
                                 <Link to="/length">Length Converter</Link>
                             </li>
                         </ul>
@@ -33,8 +35,5 @@ function App() {
 }
 
 
-function testFunc(){
-  console.log('work')
-}
 
 export default App;

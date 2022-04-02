@@ -21,7 +21,7 @@ export class UnitLeftCurrency extends Component<Props> {
     }
 
     handleLeft(e:any){
-        //addSelectLeft(e.target.value);
+        addSelectLeft(e.target.value);
     }
 
     render(){

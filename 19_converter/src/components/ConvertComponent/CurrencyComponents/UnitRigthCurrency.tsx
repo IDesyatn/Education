@@ -21,7 +21,7 @@ export class UnitRightCurrency extends Component<Props> {
     }
 
     handleRight(e:any){
-       // addSelectRight(e.target.value);
+       addSelectRight(e.target.value);
     }
 
     render(){

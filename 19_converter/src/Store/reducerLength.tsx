@@ -31,7 +31,23 @@ const lengthReducer = (state = initState, action:{type:string, payload?:any}) =>
             return {
                 ...state,
                 answer: action.payload
-            };
+            }
+        case 'LENGTH_CONVERT_INIT':
+            return{
+                ...state, 
+                userData: 0,
+                right: "Meter",
+                left: "Meter",
+                answer: 0
+            }
+        case 'CURRENCY_CONVERT_INIT':
+            return{
+                ...state, 
+                userData: 0,
+                right: "UAH",
+                left: "UAH",
+                answer: 0
+                }
         default:
             return state
     }
