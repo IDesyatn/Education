@@ -1,0 +1,18 @@
+.container {
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 32px;
+  color: rgb(96, 205, 255);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.panel{
+  display: flex;
+  justify-content: space-between;
+}

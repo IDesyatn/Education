@@ -46,7 +46,6 @@ build/Release
 
 # Dependency directories
 node_modules/
-jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
@@ -504,7 +503,6 @@ ecf/
 rcf/
 
 # Windows Store app package directories and files
-AppPackages/
 BundleArtifacts/
 Package.StoreAssociation.xml
 _pkginfo.txt

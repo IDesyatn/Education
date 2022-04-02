@@ -1,0 +1,67 @@
+.btnConvert{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px 15px;
+    border:1px solid rgb(96, 205, 255);
+    background-color: #fff;
+    color: rgb(96, 205, 255);
+    outline: none;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.btnConvert:hover{
+        background-color: rgb(34, 185, 255);
+        color:#fff;
+}
+
+
+.left{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.left__input{
+    font-size: 24px;
+    padding: 5px;
+    border: 1px solid rgb(96, 205, 255);
+}
+
+p{
+    margin: 0;
+    padding: 0;
+}
+
+.right{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.right__answer{
+    font-size: 24px;
+    padding: 7px;
+    background-color: rgb(96, 205, 255);
+    color: #fff;
+
+}
+
+.unitLeft{
+    font-size: 24px;
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid rgb(96, 205, 255);
+    outline: none;
+}
+
+.unitRight{
+    font-size: 24px;
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid rgb(96, 205, 255);
+    outline: none;
+}
