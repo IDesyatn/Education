@@ -24,9 +24,8 @@ export class UnitRightLength extends Component<Props> {
     }
 
     render(){
-        console.log(store.getState())
         return (
-            <select onChange={this.handleRight} className='unitRight' defaultValue={'Meter'}>
+            <select onChange={this.handleRight} className='select_unit' defaultValue={'Meter'}>
                 <option value="Meter" >Meter</option>
                 <option value="Verst" >Verst</option>
                 <option value="Mile">Mile</option>

@@ -26,7 +26,7 @@ export class RightField extends React.Component<Props, State> {
     render(){
         return (
             <div className='right'>
-                <p className="right__answer">{this.state.answer}</p>
+                <input className="right__answer input_field" type="text"value={this.state.answer} disabled/>
             </div>
         )
     }

@@ -7,13 +7,15 @@ import { UnitRightLength } from '../ConvertComponent/LengthComponents/UnitRightL
 
 export default function LengthConverter(){
     return <div className="container">
-    <h2 className="title">Converter length</h2>
-              <div className="panel">
+    <h2 className="title">Length converter </h2>
+    <div className="panel">
                   <LeftField/>
-                  <UnitLeftLength />
                   <RightField/>
-                  <UnitRightLength /> 
-              </div>
+                </div>
+                <div className='select_block'>
+                    <UnitLeftLength />
+                    <UnitRightLength /> 
+                </div>
               <ConfirmButton/>
 
   </div>

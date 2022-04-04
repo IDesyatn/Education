@@ -25,9 +25,8 @@ export class UnitLeftCurrency extends Component<Props> {
     }
 
     render(){
-        console.log(store.getState())
         return (
-            <select onChange={this.handleLeft} className='unitLeft' defaultValue={'UAH'}>
+            <select onChange={this.handleLeft} className='select_unit' defaultValue={'UAH'}>
                 <option value="UAH" >UAH</option>
                 <option value="EUR" >EUR</option>
                 <option value="USD">USD</option>

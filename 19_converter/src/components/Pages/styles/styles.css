@@ -2,66 +2,64 @@
     margin-left: auto;
     margin-right: auto;
     padding: 8px 15px;
-    border:1px solid rgb(96, 205, 255);
-    background-color: #fff;
-    color: rgb(96, 205, 255);
+    border:1px solid rgb(0, 0, 0);
+    background-color: #E8E9EB;
+    color: rgb(0, 0, 0);
     outline: none;
     margin-top: 15px;
     cursor: pointer;
     transition: all .3s;
+    font-size: 20px;
+    
 }
 
 .btnConvert:hover{
-        background-color: rgb(34, 185, 255);
+        background-color: #313638;
         color:#fff;
 }
 
-
-.left{
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-
-}
-
-.left__input{
-    font-size: 24px;
-    padding: 5px;
-    border: 1px solid rgb(96, 205, 255);
-}
 
 p{
     margin: 0;
     padding: 0;
 }
 
-.right{
+
+
+.input_field{
+    font-size: 24px;
+    padding: 7px; 
+    background-color: #E8E9EB;
+    border: 1px solid rgb(0, 0, 0); 
     width: 300px;
+    height: 30px;
     display: flex;
     flex-direction: column;
+
 }
 
+ 
+input{
+    border: none;
+} 
 
-.right__answer{
+.select_block{
+    display: flex;
+  justify-content: space-between;
+   margin: 15px 0px;
+   height: 46px;
+    
+}
+
+.select_unit{
     font-size: 24px;
     padding: 7px;
-    background-color: rgb(96, 205, 255);
-    color: #fff;
+    border:  1px solid rgb(0, 0, 0); 
+    width: 315px;
+    height: 46px;
 
+    background-color: #E8E9EB;
 }
 
-.unitLeft{
-    font-size: 24px;
-    padding: 5px;
-    border: none;
-    border-bottom: 1px solid rgb(96, 205, 255);
-    outline: none;
-}
 
-.unitRight{
-    font-size: 24px;
-    padding: 5px;
-    border: none;
-    border-bottom: 1px solid rgb(96, 205, 255);
-    outline: none;
-}
+

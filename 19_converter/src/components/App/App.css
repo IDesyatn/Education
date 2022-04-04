@@ -7,12 +7,42 @@
 
 .title {
   font-size: 32px;
-  color: rgb(96, 205, 255);
+  color: #313638;
   text-align: center;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 .panel{
   display: flex;
   justify-content: space-between;
+}
+
+
+.navigation {
+  font-size: 0;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.navigation__list {
+  display: inline-block; 
+  font-size: 24px;
+  margin: 20px 5% 20px 0;
+  text-decoration: none;
+  color: white;
+  
+}
+
+.App-header{
+  background-color: #313638;
+  padding: 0;
+  margin: 0;
+}
+
+.navigation_li{
+  text-decoration: none;
+  color: white;
+  /* margin: 0px 50px 0px 50px */
 }

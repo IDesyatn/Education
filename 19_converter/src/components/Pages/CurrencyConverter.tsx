@@ -7,13 +7,16 @@ import { RightField } from '../ConvertComponent/GeneralComponents/RightField';
 
 export default function LengthConverter(){
     return <div className="container">
-    <h2 className="title">Currency corverter</h2>
+    <h2 className="title">Currency converter</h2>
               <div className="panel">
                   <LeftField/>
-                  <UnitLeftCurrency />
                   <RightField/>
-                  <UnitRightCurrency /> 
-              </div>
+                </div>
+                <div className='select_block'>
+                    <UnitLeftCurrency />
+                    <UnitRightCurrency /> 
+                </div>
+              
               <ConfirmButton/>
 
   </div>

@@ -11,15 +11,14 @@ const LengthConverter = loadable(()=>import('../Pages/LengthConverter'))
 function App() {
   return (
     <BrowserRouter>
-         <main className="App">
                 <header className="App-header">
                     <nav>
-                        <ul>
-                            <li onClick={addCurrencyConvertInit}>
-                                <Link to="/currency">Currency Converter</Link>
+                        <ul className ="navigation">
+                            <li onClick={addCurrencyConvertInit} className="navigation__list">
+                                <Link to="/currency" className='navigation_li'>Currency Converter</Link>
                             </li>
-                            <li onClick={addLengthConvertInit}>
-                                <Link to="/length">Length Converter</Link>
+                            <li onClick={addLengthConvertInit} className="navigation__list">
+                                <Link to="/length" className='navigation_li' >Length Converter</Link>
                             </li>
                         </ul>
                     </nav>
@@ -29,7 +28,7 @@ function App() {
                   <Route path="/currency" component={CurrencyConverter} />
                 </Switch>
 
-            </main>
+
     </BrowserRouter> 
   );
 }

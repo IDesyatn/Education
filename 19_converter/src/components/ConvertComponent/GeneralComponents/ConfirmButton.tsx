@@ -4,10 +4,14 @@ import '../../Pages/styles/styles.css';
 
 import {addAnswer} from '../../../Store/actionsTypeLength'
 import {ConvertLengthLogic} from '../../../ConverLogic/ConvertLengthLogic'
+import {ConvertCurrencyLogic} from '../../../ConverLogic/ConvertCurrencyLogic'
+import store from '../../../Store/reducerLength'
+
 
 type Props = {};
 
 export class ConfirmButton extends Component<Props>{
+
 
     constructor(props:Props){
         super(props);
@@ -15,7 +19,16 @@ export class ConfirmButton extends Component<Props>{
     }
 
     hendleConverte(){
-        ConvertLengthLogic()
+        switch(store.getState().url){
+            case '/length':
+                ConvertLengthLogic()
+                break;
+            case '/currency':
+                ConvertCurrencyLogic()
+                break; 
+            default:
+                console.log('Something wrong...')
+        }
     }
 
     render(){

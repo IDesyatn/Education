@@ -27,7 +27,7 @@ export class LeftField extends Component<Props>{
     render(){
         return (
             <div className="left">
-                <input type="number" onChange={this.handleValue} className="left__input" placeholder="enter your length here"/>
+                <input type="number" onChange={this.handleValue} className="left__input input_field" placeholder="enter your value here"/>
             </div>
         )
     }
